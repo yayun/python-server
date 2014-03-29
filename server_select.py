@@ -38,7 +38,7 @@ while 1:
             data = s.recv(1024)
             if data:
                 print 'received "%s" from %s' % (data, s.getpeername())
-                #input_queues[s].put(data)
+                input_queues[s].put(data)
                 if s not in outputs:
                     outputs.append(s)
             else:
@@ -56,8 +56,8 @@ while 1:
             input_queues[s].put(send_data)
             next_msg = input_queues[s].get_nowait()
             s.send(next_msg)
-            '''#request=input_queues[s].get()
-            header=data.split("\n")[1] 
+            '''request=input_queues[s].get()
+            header=request.split("\n")[1] 
             #file=header.split(" ")[1]
             send="HTTP/1.1 200 OK\r\nContent-Type: image/jpg\r\n\r\n"
             img=open("./like.jpg",'r').read()
