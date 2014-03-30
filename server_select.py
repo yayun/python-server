@@ -107,7 +107,7 @@ while 1:
     # call select to block and wait for network activity
     # print {'inputs': map_fd_list(inputs), 'outputs': map_fd_list(outputs) }
     readables, writables, exceptionals = select.select(inputs, outputs, [])
-    # print {'readables': map_fd_list(readables), 'writables': map_fd_list(writables), 'exceptionals': map_fd_list(exceptionals)}
+    print {'readables': map_fd_list(readables), 'writables': map_fd_list(writables), 'exceptionals': map_fd_list(exceptionals)}
 
     for s in readables:
         if s is server:
